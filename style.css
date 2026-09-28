@@ -805,3 +805,6 @@ body {
         transition: none;
     }
 }
+.janela-sabor:focus {
+    outline: none;
+}
