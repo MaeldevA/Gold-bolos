@@ -808,3 +808,33 @@ body {
 .janela-sabor:focus {
     outline: none;
 }
+/* =====================================
+   REMOVER CONTORNO AZUL NO CELULAR
+===================================== */
+
+.janela-sabor {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.janela-sabor:focus,
+.janela-sabor:focus-visible,
+.janela-sabor:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.detalhes-sabor {
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.produto-vitrine,
+.produto-vitrine:focus,
+.produto-vitrine:focus-visible,
+.produto-vitrine:active {
+    -webkit-tap-highlight-color: transparent;
+}
