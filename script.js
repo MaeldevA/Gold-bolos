@@ -132,6 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Descrição em breve.";
 
             janela.showModal();
+
+if (document.activeElement) {
+    document.activeElement.blur();
+}
         });
 
     });
