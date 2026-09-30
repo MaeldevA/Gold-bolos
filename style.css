@@ -865,7 +865,6 @@ body {
         margin-right: calc((100% - 56px) / 6);
     }
 }
-
 /* Tablet e celular: último produto centralizado */
 @media (max-width: 900px) {
 
