@@ -1,58 +1,226 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="theme-color" content="#000000">
 
     <title>Gold Bolos | Feitos com Amor</title>
 
-    <link
-        rel="preload"
-        href="fonts/GreatVibes-Regular.ttf"
-        as="font"
-        type="font/ttf"
-        crossorigin
-    >
+    <style>
+        @font-face {
+            font-family: "Great Vibes";
+            src: url("fonts/GreatVibes-Regular.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+        }
 
-    <link
-        rel="preload"
-        href="fonts/Montserrat-Regular.ttf"
-        as="font"
-        type="font/ttf"
-        crossorigin
-    >
+        @font-face {
+            font-family: "Montserrat";
+            src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url("fonts/Montserrat-Medium.ttf") format("truetype");
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url("fonts/Montserrat-SemiBold.ttf") format("truetype");
+            font-weight: 600;
+            font-style: normal;
+        }
+
+
+        /* =====================================
+           FOTO PRINCIPAL
+        ===================================== */
+
+        .area-foto {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .foto-principal {
+            position: relative;
+
+            width: min(100%, 470px);
+
+            border: none !important;
+            border-radius: 0 !important;
+
+            background: transparent !important;
+            box-shadow: none !important;
+
+            overflow: visible !important;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =====================================
+           HALO DOURADO
+        ===================================== */
+
+        .foto-principal::before {
+            content: "";
+
+            position: absolute;
+
+            width: 108%;
+            height: 82%;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            background: radial-gradient(
+                ellipse,
+                rgba(218, 165, 32, 0.10) 0%,
+                rgba(218, 165, 32, 0.065) 35%,
+                rgba(218, 165, 32, 0.035) 58%,
+                rgba(218, 165, 32, 0.015) 72%,
+                transparent 86%
+            );
+
+            filter: blur(18px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================
+           IMAGEM DOS BOLOS
+        ===================================== */
+
+        .imagem-inicio {
+            position: relative;
+
+            z-index: 1;
+
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            max-width: 470px;
+
+            object-fit: contain;
+
+            transform: scale(1.25);
+        }
+
+
+        /* =====================================
+           CELULAR
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .foto-principal {
+                width: min(100%, 380px);
+            }
+
+            .imagem-inicio {
+                max-width: 380px;
+
+                transform: scale(1.15);
+            }
+
+            .foto-principal::before {
+                width: 110%;
+                height: 80%;
+            }
+
+        }
+    </style>
 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
+
 
 <body>
 
-    <div class="brilhos brilhos-esquerda" aria-hidden="true"></div>
-    <div class="brilhos brilhos-direita" aria-hidden="true"></div>
+    <!-- Brilhos dourados -->
+    <div
+        class="brilhos brilhos-esquerda"
+        aria-hidden="true">
+    </div>
+
+    <div
+        class="brilhos brilhos-direita"
+        aria-hidden="true">
+    </div>
+
 
     <main class="inicio">
 
         <section class="apresentacao">
 
-            <div class="detalhe-superior" aria-hidden="true">
+
+            <!-- Detalhe superior -->
+
+            <div
+                class="detalhe-superior"
+                aria-hidden="true">
+
                 <span></span>
-                <span class="estrela">✦</span>
+
+                <span class="estrela">
+                    ✦
+                </span>
+
                 <span></span>
+
             </div>
+
+
+            <!-- Nome da marca -->
 
             <header class="cabecalho">
-                <h1 class="logo">Gold Bolos</h1>
+
+                <h1 class="logo">
+                    Gold Bolos
+                </h1>
+
             </header>
 
+
+            <!-- FOTO PRINCIPAL -->
+
             <div class="area-foto">
+
                 <div class="foto-principal">
-                    <span class="icone-foto" aria-hidden="true">✦</span>
-                    <p>Em breve, nossa foto!</p>
+
+                    <img
+                        src="img/inicio-bolos.png"
+                        alt="Bolos no pote da Gold Bolos"
+                        class="imagem-inicio"
+                    >
+
                 </div>
+
             </div>
+
+
+            <!-- Conteúdo -->
 
             <div class="conteudo">
 
@@ -60,27 +228,57 @@
                     UM TOQUE DE DOÇURA PARA O SEU DIA
                 </p>
 
+
                 <h2 class="titulo-principal">
+
                     Bolos no pote
-                    <span>feitos com amor ♡</span>
+
+                    <span>
+                        feitos com amor ♡
+                    </span>
+
                 </h2>
+
 
                 <p class="descricao">
                     Ingredientes selecionados, muito recheio
                     e carinho em cada pote.
                 </p>
 
-                <div class="divisor" aria-hidden="true">
+
+                <!-- Divisor -->
+
+                <div
+                    class="divisor"
+                    aria-hidden="true">
+
                     <span></span>
-                    <span class="estrela">✦</span>
+
+                    <span class="estrela">
+                        ✦
+                    </span>
+
                     <span></span>
+
                 </div>
 
+
+                <!-- Botão -->
+
                 <div class="area-botao">
-                    <a href="cardapio.html" class="botao-cardapio">
+
+                    <a
+                        href="cardapio.html"
+                        class="botao-cardapio">
+
                         VER CARDÁPIO
-                        <span aria-hidden="true">→</span>
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
                     </a>
+
                 </div>
 
             </div>
@@ -88,6 +286,9 @@
         </section>
 
     </main>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
