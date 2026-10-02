@@ -23,6 +23,13 @@
         crossorigin
     >
 
+    <!-- CARREGAMENTO ANTECIPADO DAS 5 FOTOS -->
+    <link rel="preload" as="image" href="img/sabor1.png">
+    <link rel="preload" as="image" href="img/sabor2.png">
+    <link rel="preload" as="image" href="img/sabor3.png">
+    <link rel="preload" as="image" href="img/sabor4.png">
+    <link rel="preload" as="image" href="img/sabor5.png">
+
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -45,13 +52,22 @@
 
 
         /* =====================================
-           4º SABOR CENTRALIZADO NO PC
+           4º E 5º SABORES CENTRALIZADOS
         ===================================== */
 
         @media (min-width: 901px) {
 
             .produto-vitrine:nth-child(4) {
                 grid-column: 2;
+            }
+
+            .produto-vitrine:nth-child(5) {
+                grid-column: 3;
+                transform: translateX(-50%);
+            }
+
+            .produto-vitrine:nth-child(4) {
+                transform: translateX(50%);
             }
 
         }
@@ -63,8 +79,10 @@
 
         @media (max-width: 600px) {
 
-            .produto-vitrine:nth-child(4) {
+            .produto-vitrine:nth-child(4),
+            .produto-vitrine:nth-child(5) {
                 grid-column: auto;
+                transform: none;
             }
 
             .imagem-bolo {
@@ -132,6 +150,16 @@
         ===================================== */
 
         .imagem-detalhes.foto-brigadeiro {
+            transform: scale(1.08);
+        }
+
+
+        /* =====================================
+           DOCE DE LEITE
+           FOTO UM POUCO MENOR
+        ===================================== */
+
+        .imagem-detalhes.foto-doce-leite {
             transform: scale(1.08);
         }
 
@@ -263,6 +291,13 @@
             }
 
 
+            /* Doce de Leite menor no celular */
+
+            .imagem-detalhes.foto-doce-leite {
+                transform: scale(1.05);
+            }
+
+
             #titulo-janela {
                 margin-top: 0;
 
@@ -306,6 +341,13 @@
             /* Brigadeiro menor */
 
             .imagem-detalhes.foto-brigadeiro {
+                transform: scale(1.02);
+            }
+
+
+            /* Doce de Leite menor */
+
+            .imagem-detalhes.foto-doce-leite {
                 transform: scale(1.02);
             }
 
@@ -413,7 +455,9 @@
         </header>
 
 
-        <!-- PRODUTOS -->
+        <!-- =====================================
+             PRODUTOS
+        ====================================== -->
 
         <section
             class="lista-produtos"
@@ -438,6 +482,9 @@
                         src="img/sabor1.png"
                         alt="Bolo no pote de Ninho com Morango"
                         class="imagem-bolo"
+                        loading="eager"
+                        decoding="async"
+                        fetchpriority="high"
                     >
 
                 </span>
@@ -473,6 +520,9 @@
                         src="img/sabor2.png"
                         alt="Bolo no pote de Ninho com Nutella"
                         class="imagem-bolo"
+                        loading="eager"
+                        decoding="async"
+                        fetchpriority="high"
                     >
 
                 </span>
@@ -508,6 +558,9 @@
                         src="img/sabor3.png"
                         alt="Bolo no pote de Brigadeiro"
                         class="imagem-bolo"
+                        loading="eager"
+                        decoding="async"
+                        fetchpriority="high"
                     >
 
                 </span>
@@ -543,6 +596,9 @@
                         src="img/sabor4.png"
                         alt="Bolo no pote de Brigadeiro com Morango"
                         class="imagem-bolo"
+                        loading="eager"
+                        decoding="async"
+                        fetchpriority="high"
                     >
 
                 </span>
@@ -550,6 +606,44 @@
 
                 <span class="nome-vitrine">
                     Brigadeiro com Morango
+                </span>
+
+
+                <span class="preco-vitrine">
+                    R$ 17,90
+                </span>
+
+            </button>
+
+
+
+            <!-- SABOR 5 -->
+
+            <button
+                class="produto-vitrine"
+                type="button"
+                data-sabor="Doce de Leite"
+                data-descricao="Massa macia com recheio cremoso de doce de leite, trazendo um sabor suave, doce e irresistivelmente cremoso."
+                data-imagem="img/sabor5.png"
+                aria-label="Ver detalhes do Doce de Leite"
+            >
+
+                <span class="imagem-vitrine">
+
+                    <img
+                        src="img/sabor5.png"
+                        alt="Bolo no pote de Doce de Leite"
+                        class="imagem-bolo"
+                        loading="eager"
+                        decoding="async"
+                        fetchpriority="high"
+                    >
+
+                </span>
+
+
+                <span class="nome-vitrine">
+                    Doce de Leite
                 </span>
 
 
@@ -595,13 +689,11 @@
                         rx="5"
                     ></rect>
 
-
                     <circle
                         cx="12"
                         cy="12"
                         r="4"
                     ></circle>
-
 
                     <circle
                         cx="17.5"
@@ -623,7 +715,9 @@
     </main>
 
 
-    <!-- JANELA DE DETALHES -->
+    <!-- =====================================
+         JANELA DE DETALHES
+    ====================================== -->
 
     <dialog
         class="janela-sabor"
@@ -633,7 +727,6 @@
     >
 
         <div class="detalhes-sabor">
-
 
             <h2 id="titulo-janela">
                 Sabor 1
@@ -664,13 +757,14 @@
                 Toque ou clique para fechar
             </span>
 
-
         </div>
 
     </dialog>
 
 
-    <!-- ATUALIZA FOTO E DETALHES -->
+    <!-- =====================================
+         ATUALIZA FOTO E DETALHES
+    ====================================== -->
 
     <script>
 
@@ -725,19 +819,31 @@
                         "Bolo no pote de " + nome;
 
 
-                    /* Remove o tamanho especial anterior */
+                    /* Remove tamanhos especiais anteriores */
 
                     imagemJanela.classList.remove(
-                        "foto-brigadeiro"
+                        "foto-brigadeiro",
+                        "foto-doce-leite"
                     );
 
 
-                    /* Diminui somente o Brigadeiro */
+                    /* Brigadeiro menor */
 
                     if (nome === "Brigadeiro") {
 
                         imagemJanela.classList.add(
                             "foto-brigadeiro"
+                        );
+
+                    }
+
+
+                    /* Doce de Leite menor */
+
+                    if (nome === "Doce de Leite") {
+
+                        imagemJanela.classList.add(
+                            "foto-doce-leite"
                         );
 
                     }
