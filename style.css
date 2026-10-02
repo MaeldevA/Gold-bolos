@@ -878,3 +878,29 @@ body {
         justify-self: center;
     }
 }
+/* =====================================
+   DOCE DE LEITE - FOTO MENOR
+===================================== */
+
+.produto-vitrine:nth-child(5) .imagem-bolo {
+    transform: scale(0.88);
+}
+
+.imagem-detalhes.foto-doce-leite {
+    transform: scale(1.08);
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    .produto-vitrine:nth-child(5) .imagem-bolo {
+        transform: scale(0.88);
+    }
+
+    .imagem-detalhes.foto-doce-leite {
+        transform: scale(1.05);
+    }
+
+}
